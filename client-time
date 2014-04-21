@@ -1,0 +1,15 @@
+#/bin/sh
+
+URL='http://127.0.0.1/time.php'
+
+while [ 1 ]; do
+	TIME=$(wget $URL -q -O-)
+	if [ ! -z "$TIME" ]; then
+		break
+	fi
+	sleep 1s
+done
+
+date $TIME
+
+exit 0
